@@ -1,13 +1,23 @@
 <script setup>
+import SearchBar from "./components/SearchBar.vue";
+
+function searchFilm(movieInput) {
+  console.log(movieInput);
+}
 </script>
 
 <template>
-  <div class="">
-    <h1 class="color">Vue 3 + Vite + Tailwind CSS</h1>
-    <p>Vue 3 + Vite + Tailwind CSS</p>
+  <div class="text-center text-6xl">
+    <h1
+      class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
+    >
+      Movies
+    </h1>
+    <p
+      class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400"
+    >
+      Find your favorite movies and TV shows.
+    </p>
+    <SearchBar @searchMovie="searchFilm" />
   </div>
-
 </template>
-
-<style scoped>
-</style>
