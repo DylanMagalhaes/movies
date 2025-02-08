@@ -1,8 +1,11 @@
 <script setup>
+import { ref } from "vue";
 import SearchBar from "./components/SearchBar.vue";
 
-function searchFilm(movieInput) {
-  console.log(movieInput);
+const movies = ref([]);
+
+function searchFilm(result) {
+  movies.value = result;
 }
 </script>
 

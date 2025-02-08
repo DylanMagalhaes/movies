@@ -1,18 +1,24 @@
 <script setup>
 import { ref, watch } from "vue";
 import { defineEmits } from "vue";
+import { moviesRepository } from "../repositories/moviesRepository";
 
 const movieInput = ref("");
 const emit = defineEmits(["searchMovie"]);
 
-function searchFilm() {
-  emit("searchMovie", movieInput.value);
+const { getMoviesByTitle } = moviesRepository();
+
+async function searchFilm(event) {
+  event.preventDefault();
+
+  if (!movieInput.value || movieInput.value === "") {
+    return;
+  }
+
+  const result = await getMoviesByTitle(movieInput.value);
+  emit("searchMovie", result);
   movieInput.value = "";
 }
-
-watch(movieInput, (newValue) => {
-  console.log(newValue);
-});
 </script>
 
 <template>
